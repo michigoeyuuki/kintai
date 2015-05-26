@@ -1,36 +1,68 @@
 ﻿@model Kintai.Models.AttendanceMonth
 
 @{
-    ViewBag.Title = "Create";
+  //現在の日付から、月末の日付を算出
+  DateTime dt = DateTime.Now;
+  dt = dt.AddMonths(1);
+  dt = new DateTime(dt.Year, dt.Month, 1);
+  dt = dt.AddDays(-1.0);
+
+  //対象の月をレコード設定用に画面に仕込む用に宣言
+  int month = dt.Month;
+
+  //日付のフォーム作成の為に対象の月の日付分の配列を作成
+  int days = dt.Day;
+  int[] MonthDays = new int[31];
+  for (int i = 0; i < days; ++i)
+  {
+    MonthDays[i] = i + 1;
+  }
+
+  //ログインユーザーのUserCodeレコード設定用に画面に仕込む用に宣言
+  //TODO今は仮置き、ログイン認証実装後、どうやって取得するか考える
+  int user_code = 1;
 }
 
-<h2>Create</h2>
+@using (Html.BeginForm())
+{
+  @Html.AntiForgeryToken()
+  @Html.ValidationSummary(true)
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+  <fieldset>
+    <legend>AttendanceMonth</legend>
 
-    <fieldset>
-        <legend>AttendanceMonth</legend>
+    <div class="month-field">
+      @Html.HiddenFor(
+      model => model.Month,
+      month
+      )
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UserCode)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UserCode)
-            @Html.ValidationMessageFor(model => model.UserCode)
-        </div>
+    <div class="user-field">
+      @Html.HiddenFor(
+      model => model.Month,
+      user_code
+      )
+    </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+    @{
+  foreach (int day in MonthDays)
+  {
+    <p>@month/@day</p>
+    @Html.EditorFor(model => model.Month)
+  }
+}
+
+    <p>
+      <input type="submit" value="保存" />
+    </p>
+  </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+  @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+  @Scripts.Render("~/bundles/jqueryval")
 }
