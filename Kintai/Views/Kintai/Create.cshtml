@@ -49,7 +49,10 @@
   foreach (int day in MonthDays)
   {
     <p>@month/@day</p>
-    @Html.EditorFor(model => model.Month)
+  @Html.EditorFor(model => model.Month)//ただ表示させてるだけ
+  //@Html.EditorFor(model => model.AttendanceDays.Day)　日付単位で、AttendanceDayのレコードをつくりたい
+  //@Html.HiddenFor(model => model.AttendanceDays.UserCode, user_code) もっといい設定の仕方ないか？
+  //@Html.HiddenFor(model => model.AttendanceMonthId, month) AttendanceMonthとの外部キーの設定は自動でSaveの時やってくれないか？
   }
 }
 
