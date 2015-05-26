@@ -4,15 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>勤怠管理</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新規月入力", "Create")
 </p>
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserCode)
+            @Html.DisplayNameFor(model => model.Month)
         </th>
         <th></th>
     </tr>
@@ -20,12 +20,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.UserCode)
+            @Html.DisplayFor(modelItem => item.Month)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Month }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Month }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Month })
+            @Html.ActionLink("編集", "Edit", new { id=item.Month }) 
         </td>
     </tr>
 }
