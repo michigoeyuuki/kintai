@@ -187,6 +187,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KintaiController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,6 +195,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AttendanceDay.cs" />
     <Compile Include="Models\AttendanceMonth.cs" />
+    <Compile Include="Models\KintaiContext.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -308,6 +310,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Kintai\Index.cshtml" />
+    <Content Include="Views\Kintai\Details.cshtml" />
+    <Content Include="Views\Kintai\Create.cshtml" />
+    <Content Include="Views\Kintai\Edit.cshtml" />
+    <Content Include="Views\Kintai\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

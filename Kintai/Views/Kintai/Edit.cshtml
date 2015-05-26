@@ -1,0 +1,38 @@
+﻿@model Kintai.Models.AttendanceMonth
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>AttendanceMonth</legend>
+
+        @Html.HiddenFor(model => model.Month)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserCode)
+            @Html.ValidationMessageFor(model => model.UserCode)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
