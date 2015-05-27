@@ -31,37 +31,28 @@
   <fieldset>
     <legend>AttendanceMonth</legend>
 
-    <div class="month-field">
-      @Html.HiddenFor(
-      model => model.Month,
-      month
-      )
-    </div>
-
     <div class="user-field">
-      @Html.HiddenFor(
-      model => model.Month,
-      user_code
-      )
+      <p>@Html.DisplayNameFor(model => model.User.name) : @Html.DisplayFor(model => model.User.name)</p>
     </div>
 
-    <asp:table>
-      <asp:tablerow>
-        <th>日付</th>
-        <th>出社時間</th>
-      </asp:tablerow>
-        @for (var i = 0; i < Model.AttendanceDays.Count; i++)
-        {
-          <asp:tablerow>
-            <asp:tablecell>
-              @Html.DisplayFor(model => Model.AttendanceDays[i].Day)
-            </asp:tablecell>
-            <asp:tablecell>
-              @Html.EditorFor(model => Model.AttendanceDays[i].StartTime.TimeOfDay)
-            </asp:tablecell>
-          </asp:tablerow>
-        }
-    </asp:table>
+    <table class=".table-bordered">
+      <tr>
+        <th>@Html.DisplayNameFor(model => Model.AttendanceDays[0].Day)</th>
+        <th>@Html.DisplayNameFor(model => Model.AttendanceDays[0].StartTime)</th>
+        <th>@Html.DisplayNameFor(model => Model.AttendanceDays[0].EndTime)</th>
+        <th>@Html.DisplayNameFor(model => Model.AttendanceDays[0].RestTime)</th>
+      </tr>
+
+      @for (var i = 0; i < Model.AttendanceDays.Count; i++)
+      {
+        <tr>
+          <td>@Html.DisplayFor(model => Model.AttendanceDays[i].Day)</td>
+          <td>@Html.TextBoxFor(model => Model.AttendanceDays[i].StartTime, new{ @Value = Model.AttendanceDays[i].HourMinute })</td>
+          <td>@Html.TextBoxFor(model => Model.AttendanceDays[i].EndTime.TimeOfDay)</td>
+          <td>@Html.TextBoxFor(model => Model.AttendanceDays[i].RestTime.TimeOfDay)</td>
+        </tr>
+      }
+    </table>
 
 
     <p>
