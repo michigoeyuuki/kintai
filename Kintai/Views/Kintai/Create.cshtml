@@ -45,16 +45,24 @@
       )
     </div>
 
-    @{
-  foreach (int day in MonthDays)
-  {
-    <p>@month/@day</p>
-  @Html.EditorFor(model => model.Month)//ただ表示させてるだけ
-  //@Html.EditorFor(model => model.AttendanceDays.Day)　日付単位で、AttendanceDayのレコードをつくりたい
-  //@Html.HiddenFor(model => model.AttendanceDays.UserCode, user_code) もっといい設定の仕方ないか？
-  //@Html.HiddenFor(model => model.AttendanceMonthId, month) AttendanceMonthとの外部キーの設定は自動でSaveの時やってくれないか？
-  }
-}
+    <asp:table>
+      <asp:tablerow>
+        <th>日付</th>
+        <th>出社時間</th>
+      </asp:tablerow>
+        @for (var i = 0; i < Model.AttendanceDays.Count; i++)
+        {
+          <asp:tablerow>
+            <asp:tablecell>
+              @Html.DisplayFor(model => Model.AttendanceDays[i].Day)
+            </asp:tablecell>
+            <asp:tablecell>
+              @Html.EditorFor(model => Model.AttendanceDays[i].StartTime.TimeOfDay)
+            </asp:tablecell>
+          </asp:tablerow>
+        }
+    </asp:table>
+
 
     <p>
       <input type="submit" value="保存" />

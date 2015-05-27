@@ -30,7 +30,19 @@ namespace Kintai.Controllers
 
     public ActionResult Create()
     {
-      return View();
+
+      int user_code = 1;
+      int attendance_month = 5;
+
+      var days = new List<AttendanceDay>();
+      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 1, UserCode = user_code });
+      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 2, UserCode = user_code });
+      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 3, UserCode = user_code });
+
+      var model = new AttendanceMonth();
+      model.AttendanceDays = days;
+
+      return View(model);
     }
 
     //

@@ -13,6 +13,6 @@ namespace Kintai.Models
     public int Month { get; set; } //勤怠月
     public int UserCode { get; set; } //社員コード
 
-    public virtual ICollection<AttendanceDay> AttendanceDays { get; set; }
+    public List<AttendanceDay> AttendanceDays { get; set; }
   }
 }
