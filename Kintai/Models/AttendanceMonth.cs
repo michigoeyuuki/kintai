@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+      
 namespace Kintai.Models
 {
   public class AttendanceMonth
@@ -11,8 +12,9 @@ namespace Kintai.Models
     [Key]
     [DisplayName("勤怠月")]
     public int Month { get; set; } //勤怠月
-    public int UserCode { get; set; } //社員コード
+    public int UserID { get; set; } //社員コード
 
     public List<AttendanceDay> AttendanceDays { get; set; }
+    public virtual User User { get; set; }
   }
 }

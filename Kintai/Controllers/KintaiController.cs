@@ -23,7 +23,7 @@ namespace Kintai.Controllers
       //ログインしたユーザーのUserCodeと現在の年を検索条件で検索かける？
       return View(db.AttendanceMonths.ToList());
     }
-
+      
     //
     // GET: /Kintai/Create
     //  新規登録初期表示
@@ -34,13 +34,17 @@ namespace Kintai.Controllers
       int user_code = 1;
       int attendance_month = 5;
 
+      var user = new User{ code = 1, name = "道越雄輝"};
+
       var days = new List<AttendanceDay>();
-      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 1, UserCode = user_code });
-      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 2, UserCode = user_code });
-      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 3, UserCode = user_code });
+      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 1, UserCode = user_code, StartTime = DateTime.Parse("00:00") });
+      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 2, UserCode = user_code, StartTime = DateTime.Parse("00:10") });
+      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 3, UserCode = user_code, StartTime = DateTime.Parse("00:20") });
 
       var model = new AttendanceMonth();
       model.AttendanceDays = days;
+      model.User = user;
+
 
       return View(model);
     }
