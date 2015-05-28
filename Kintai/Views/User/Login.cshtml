@@ -1,4 +1,4 @@
-﻿@model MvcApplication.Models.LoginModel
+﻿@model Kintai.Models.User
 @{
   ViewBag.Title = "Login";
 }
@@ -12,7 +12,7 @@
   <table>
     <tr>
       <th>ユーザーID</th>
-      <td>@Html.TextBoxFor(model => model.Id)</td>
+      <td>@Html.TextBoxFor(model => model.Code)</td>
     </tr>
     <tr>
       <th>パスワード</th>
