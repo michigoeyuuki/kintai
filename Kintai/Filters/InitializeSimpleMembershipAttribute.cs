@@ -38,7 +38,7 @@ namespace Kintai.Filters
             }
           }
 
-          WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+          WebSecurity.InitializeDatabaseConnection("Data Source=DAITI-PC/SQLEXPRESS;Initial Catalog=Kintai;Persist Security Info=True;User ID=sa;Password=daiti;Pooling=False", "User", "Code", "Name", autoCreateTables: false);
         }
         catch (Exception ex)
         {

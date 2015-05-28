@@ -1,14 +1,5 @@
 ﻿@model Kintai.Models.AttendanceMonth
 
-@{
-  //現在の日付から、月末の日付を算出
-  DateTime dt = DateTime.Now;
-  dt = dt.AddMonths(1);
-  dt = new DateTime(dt.Year, dt.Month, 1);
-  dt = dt.AddDays(-1.0);
-
-}
-
 @using (Html.BeginForm())
 {
   @Html.AntiForgeryToken()
@@ -18,7 +9,7 @@
     <legend>AttendanceMonth</legend>
 
     <div class="user-field">
-      <p>@Html.DisplayNameFor(model => model.User.name) : @Html.DisplayFor(model => model.User.name)</p>
+      <p>@Html.DisplayNameFor(model => model.User.Name) : @Html.DisplayFor(model => model.User.Name)</p>
     </div>
 
     <table class=".table-bordered">
