@@ -10,8 +10,12 @@ namespace Kintai.Models
   {
     [Key]
     [DisplayName("社員コード")]
-    public int code { get; set;}//社員コード
+    public string Code { get; set;}//社員コード
     [DisplayName("社員名")]
-    public string name { get; set; }//社員名
+    public string Name { get; set; }//社員名
+
+    public string Password { get; set; }//ログインパスワード
+
+    public bool RememberMe { get; set; }//ログイン保持フラグ
   }
 }
