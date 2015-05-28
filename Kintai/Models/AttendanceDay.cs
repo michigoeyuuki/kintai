@@ -24,9 +24,21 @@ namespace Kintai.Models
     public virtual AttendanceMonth AttendanceMonth { get; set; }
     //テーブル定義
 
-    public string HourMinute()
+    public string HourMinute(DateTime time)
     {
-      return this.StartTime.ToShortTimeString;
+      return time.ToShortTimeString();
+    }
+
+    //共通クラス作ってないので仮置き
+    public static int GetLastDayOfMonth()
+    {
+      //現在の日付から、月末の日付を算出
+      var dt = DateTime.Now;
+      dt = dt.AddMonths(1);
+      dt = new DateTime(dt.Year, dt.Month, 1);
+      dt = dt.AddDays(-1.0);
+      int value = dt.Day;
+      return value;
     }
   }
 }

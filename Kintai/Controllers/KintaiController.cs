@@ -32,16 +32,28 @@ namespace Kintai.Controllers
     {
 
       int user_code = 1;
-      int attendance_month = 5;
 
-      var user = new User{ code = 1, name = "道越雄輝"};
+      //対象月の月末日取得
+      //TODO共通部品にする
+      var dt = DateTime.Now;
+      //対象月の取得
+      int attendance_month = dt.Month;
+      dt = dt.AddMonths(1);
+      dt = new DateTime(dt.Year, dt.Month, 1);
+      dt = dt.AddDays(-1.0);
+      int last_of_month = dt.Day;
+
+      var user = new User{ Code = "1", Name = "道越雄輝"};
+      var model = new AttendanceMonth();
 
       var days = new List<AttendanceDay>();
-      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 1, UserCode = user_code, StartTime = DateTime.Parse("00:00") });
-      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 2, UserCode = user_code, StartTime = DateTime.Parse("00:10") });
-      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 3, UserCode = user_code, StartTime = DateTime.Parse("00:20") });
 
-      var model = new AttendanceMonth();
+      //ここがうまくできてない
+      for(int i=last_of_month; i<0; --i)
+      {
+      days.Add(new AttendanceDay { AttendanceMonthId = attendance_month, Day = 1, UserCode = user_code, StartTime = DateTime.Parse("00:00") });
+      }
+
       model.AttendanceDays = days;
       model.User = user;
 

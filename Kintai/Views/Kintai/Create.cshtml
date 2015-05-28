@@ -7,20 +7,6 @@
   dt = new DateTime(dt.Year, dt.Month, 1);
   dt = dt.AddDays(-1.0);
 
-  //対象の月をレコード設定用に画面に仕込む用に宣言
-  int month = dt.Month;
-
-  //日付のフォーム作成の為に対象の月の日付分の配列を作成
-  int days = dt.Day;
-  int[] MonthDays = new int[31];
-  for (int i = 0; i < days; ++i)
-  {
-    MonthDays[i] = i + 1;
-  }
-
-  //ログインユーザーのUserCodeレコード設定用に画面に仕込む用に宣言
-  //TODO今は仮置き、ログイン認証実装後、どうやって取得するか考える
-  int user_code = 1;
 }
 
 @using (Html.BeginForm())
@@ -47,9 +33,9 @@
       {
         <tr>
           <td>@Html.DisplayFor(model => Model.AttendanceDays[i].Day)</td>
-          <td>@Html.TextBoxFor(model => Model.AttendanceDays[i].StartTime, new{ @Value = Model.AttendanceDays[i].HourMinute })</td>
-          <td>@Html.TextBoxFor(model => Model.AttendanceDays[i].EndTime.TimeOfDay)</td>
-          <td>@Html.TextBoxFor(model => Model.AttendanceDays[i].RestTime.TimeOfDay)</td>
+          <td>@Html.TextBoxFor(model => Model.AttendanceDays[i].StartTime, new { @Value = Model.AttendanceDays[i].HourMinute(Model.AttendanceDays[i].StartTime) })</td>
+          <td>@Html.TextBoxFor(model => Model.AttendanceDays[i].EndTime, new { @Value = Model.AttendanceDays[i].HourMinute(Model.AttendanceDays[i].EndTime) })</td>
+          <td>@Html.TextBoxFor(model => Model.AttendanceDays[i].RestTime, new { @Value = Model.AttendanceDays[i].HourMinute(Model.AttendanceDays[i].RestTime) })</td>
         </tr>
       }
     </table>
